@@ -2,7 +2,7 @@
 #include <string>
 #include <bitset>
 
-int intLength(int i)
+long intLength(long i)
 {
 	int l = 0;
 	for (; i; i /= 10) l++;
@@ -10,7 +10,7 @@ int intLength(int i)
 }
 
 
-std::string convertToString(int num) {
+std::string convertToString(long num) {
 	try {
 		if (intLength(num) > 15) {
 			throw "Number To Big!";
@@ -26,7 +26,7 @@ std::string convertToString(int num) {
 }
 
 int main() {
-	int input;
+	long input;
 	std::cout << "Number to convert into string.." << std::endl;
 	std::cin >> input;
 	std::cout << "Convertion of " << input << " to string : " 
