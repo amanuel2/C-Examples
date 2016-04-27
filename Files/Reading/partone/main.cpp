@@ -20,8 +20,7 @@ int main() {
 			}
 			_file_.close();
 		}
-		catch (std::exception const &exc) {
-			throw exc;
+		catch (...) {
 			std::cout << "EXCEPTION!" << std::endl;
 		}
 	}
