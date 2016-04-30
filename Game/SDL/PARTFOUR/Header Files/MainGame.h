@@ -5,32 +5,27 @@
 #include<string>
 #include <algorithm>
 #include<iostream>
+#include<fstream>
 #include "Sprite.h"
-
-
 enum class GameState {
 	PLAY,
 	EXIT
 };
-
 class MainGame
 {
 public:
 	MainGame(int width, int height);
 	~MainGame();
-
 	void run();
-
 private:
-	void initSystem();
+	void initSystems();
+	void draw();
 	void processInput();
+	void checkQuit();
 	void gameLoop();
-	void quitCheck();
-	void drawGame();
-
-	int _screenWidth;
-	int _screenHieght;
-	GameState __gameState;
+	int _widthGame, _heightGame;
+	GameState _currentState;
 	SDL_Window *__window;
 	Sprite _sprite;
 };
+
