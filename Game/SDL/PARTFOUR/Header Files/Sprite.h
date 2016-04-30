@@ -1,15 +1,18 @@
 #pragma once
+#include<Windows.h>
+#include<SDL.h>
+#include<GL/glew.h>
+#include<string>
 class Sprite
 {
 public:
-	Sprite(  );
+	Sprite();
 	~Sprite();
-	void init(float x, float y, float width, float height );
-	void draw( );
-
+	void init(float y, float x, float width, float height);
+	void draw();
 private:
-	float _width, _height, _x, _y;
-	//Gluint -> unsigned int + Must 32BIT .
-	unsigned int _vboID;
+	float _x, _y, _width, _height;
+	//Gluint = unsigned int + Must Be 32BIT;
+	GLuint _vboId;
 };
 
