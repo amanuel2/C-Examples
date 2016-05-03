@@ -121,5 +121,7 @@ int main() {
     for(int i=0;i<3;i++){
         std::cout << "Shape " <<i << " area" << shape[i]->getArea() << std::endl;
     }
+    //Have to delete allocated memory to avoid memory leaks.
+    delete shape;
     return 0;
 }
