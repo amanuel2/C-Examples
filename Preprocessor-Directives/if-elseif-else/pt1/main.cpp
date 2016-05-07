@@ -10,6 +10,15 @@ Author : Amanuel Bogale
 #define MAC 1
 
 #define OS Windows
+
+///////////////////////////////
+/////////// /////////// ///////
+//List of Usefull Marcos
+
+//#if, #elif, #else, #endif, #ifdef, #ifndef.
+///////// ///////////  //////////
+////////////////////////////////
+
 int main(){
 
 #if OS == Windows
