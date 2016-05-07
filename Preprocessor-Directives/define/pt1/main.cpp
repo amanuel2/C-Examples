@@ -11,7 +11,13 @@
 #define WIN 100010001;
 #define findMAX(num,num2) ( num > num2 ? ( num ) : ( num2 ) );
 
+///////////////////////////////
+/////////// /////////// ///////
+//List of Usefull Marcos
 
+//#if, #elif, #else, #endif, #ifdef, #ifndef.
+///////// ///////////  //////////
+////////////////////////////////
 
 int main() {
 	std::string str;
