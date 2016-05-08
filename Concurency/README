@@ -1,14 +1,14 @@
-# MulThreading vs MultiProccesing
+ MulThreading vs MultiProccesing
 
 Two Type of Concurent Models..
 
-**Multithreading**
+Multithreading
 
 And
 
-**MultiProccesing**
+MultiProccesing
 
-##MultiThreading
+MultiThreading
 
 To Display:
                    Process 1       Process 2
@@ -27,7 +27,7 @@ To Display:
     Interprocess Communication. They can share memory,etc...
     
     
-##MultiProcessing
+MultiProcessing
    To Display:
       ___________________________
        |                       |
@@ -45,7 +45,7 @@ To Display:
        is only one process.
        
        
-  #Pros and Cons
+  Pros and Cons
     MultiProcessing Pros:
        - Fast To Start
        - Low Overhead
