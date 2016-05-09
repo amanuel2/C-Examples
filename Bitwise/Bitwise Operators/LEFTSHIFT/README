@@ -1,0 +1,48 @@
+|   BITWISE LEFT SHIFT >>
+|
+|   EXAMPLES: 
+|
+| y = 5;  x = 3;
+| 
+| Y in Binary = 000101
+| X in Binary = 000011
+| 
+| X 
+|
+| y = 10; x = 16;
+|  
+| Y & X = 001010 | 
+|         010000
+|       = 011010  
+|    
+|What is leftshift?
+|
+|
+| 10100101 << 1  // move all bits 1 steps left. FILL with zeros. 
+|= 01001010  
+|// no, you get truncation. You dropp off the ones that don't fit. You can never change the size of a variable.
+|  0000001 << 1
+|= 0000010
+|
+|  0000001 << 3
+|= 0001000
+|
+
+|
+|SIGNED int x = 1000 0010 1011 0000
+|// The first bit is the "sign". it tells us whether the nubmer is negative or positive. So it's differnet.
+|
+|if we shift this left, then the left-most number stary the same. Yea,h I'm quite sure..
+|
+|I know for a fact that if you RIGHT-shift, it does.
+|
+|
+|_____________________________________
+
+check every bit...
+
+int a;
+for (int i=0; i<32; i++)
+{
+    if (a & 1<<i) //... whatever.
+}

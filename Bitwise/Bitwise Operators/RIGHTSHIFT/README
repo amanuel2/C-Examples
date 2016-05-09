@@ -1,0 +1,27 @@
+|   BITWISE RIGHT SHIFT
+|
+|   EXAMPLES: 
+|
+| y = 5;  x = 3;
+| 
+| Y in Binary = 000101
+| X in Binary = 000011
+| 
+| X 
+|
+| y = 10; x = 16;
+|  
+|    
+|
+|
+| 10100101 << 1  // move all bits 1 steps right. FILL with zeros. 
+| =01001010  
+|// no, you get truncation. You dropp off the ones that don't fit. You can never change the size of a variable.
+|  0000001 >> 1
+|= 0000010
+|
+|  0000001 >> 3
+|= 0000000
+|
+|
+|_____________________________________
