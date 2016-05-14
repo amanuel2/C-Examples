@@ -1,0 +1,82 @@
+What is an Operating System?
+
+Basically, an operating system is basically a basically 
+a program that allows you to control the Software
+and Hardware.. You make sure they interact correctly...
+
+______________
+|             |
+|  SOFTWARE   |
+|________|____|
+         |
+_________|_____________
+|        |             |
+|  OPERATING SYSTEM    |
+|        |             |
+|________|_____________|
+         |
+_________|_____
+|             |
+|  HARDWARE   |
+|____________ |
+
+
+Famous Operating Systems:
+
+-LINUX
+-MAC OSX
+-UNIX
+-FreeBSD
+-WINDOWS
+
+Well What does the Operating System Manage Or Control?
+
+Well there are 4 essential Managers, of every Operating System,
+They work as a team to get the job done! Operating System,
+just makes sure they are all working in good/harmony.
+_____________                            _____________
+|           | ___                    ___ |           |
+|Process Mgr|    \                  /    | Memory Mgr|
+|           |     \                /     |           |
+|___________|      \              /      |___________|
+                    \____________/
+                    |          |
+                    |    OS    |
+                    |          |
+                    |__________|
+______________     /             \        _____________
+|            |    /               \       |           |
+|  File Mgr  |   /                 \      | Device Mgr|
+|            |__/                   \____ |           |
+|____________|                            |___________|
+
+
+Memory Mgr:
+
+Memory Manager, is in charge of main memory.. it scans for every request/attempt
+for memory usage, and checks if it is valid.. It allows allocation of memory, to 
+memory spaces that are not taken up already... It also dealocates memory, for new
+requests to come on!
+
+Process Mgr:
+
+Basically decides how to allocate the brain of computer.. Its common name is 
+refred to as the Central Proccessing Unit or most notable the CPU. It is neccecary
+the CPU, scans and keep track of every process made in the OS. It has to handle
+jobs as they enter system and manage each process that is accosiated with that
+job.
+
+Device Mgr:
+Moniters every device,channel, and monitor. The device manager has to do so
+in the most effiecent way of doing so!! Examples:
+
+-Usb Sticks
+-Printers
+-External Hardrives
+
+File Mgr:
+
+Checks every type of file that is on the system, Program files, Compiler Files,
+Installed applications, etc... It sets permissions so the user can not read or/and
+write on the file it is not allowed to.. For example a normal user cant real and/or
+read a Administer File!

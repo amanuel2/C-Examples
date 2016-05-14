@@ -1,0 +1,399 @@
+Memory Manager
+
+Lets look at the three schemes used to do memory managment.
+
+
+REAL MEMORY
+___________
+
+1) Single User Contiguous
+
+First scheme of memory management. And was the least effeicent out of all
+schemes in terms of performance.
+
+
+Basically what happenes in this scheme is that a single Job basically 
+takes up the whole ram xD! So this is obviously not effeicent in terms
+of performance, or in other words its god dam slow!!!
+
+      RAM  
+__________________
+|               |
+|               |
+|     JOB 1     |
+|               |
+|               |
+|               |
+|_______________|
+
+
+2) Fixed Partitions
+
+This is where the Fixed Partitions shceme came about...
+Allows Allocated partions to have more than just a 
+single job.
+
+All of the partions were stored in a partion memory table, to see
+partion usage
+
+|Partion Size   Memory Adress    Acess      State
+|200k             0xCAdf        JOB ONE      Ready
+|300k             0xFFDG        JOB TWO      BUSY
+|10k              0xHHKL        JOB THREE    READY
+|50k              0xLLPO        JOB FOUR     READY
+|________
+
+As for the term 'fixed', yea you guessed it, the size of these partions 
+were static, but random. So yes, when you rebooted your computer
+the size of the partion changed. But only on reebot. Dynamic Solution
+Was needed to solve this issue, so you dont need to reboot the computer
+all the time you process or even add a job...
+
+
+3) Dynamic Partions
+
+In Dynamic Partions, Jobs are given just as many as of memory as they 
+request... So its dynamic. This is A Significant Improgment over 
+Fixed Partions..                      __________________________
+___________________                   |                        |
+|                 |   _____________ / | Can i get a 20k Please?|
+|       200k      |   |    20k   | /  |________________________|
+|_________________|   |__________|
+|_______20k_______| ______________________________________s
+|                 | |                                    |
+|_______ 100k_____|/|Yup! Luckly there is a little spot  |
+|_________________| |Avaliable for you!                  |
+                    |____________________________________|
+
+
+Because memory is not wasted in the partions.. Unfourtunately, this is 
+not a complete Solution. Both Fixed Partions and Dynamic Partions
+need a way to allocate jobs to the available partions. There are two
+ways to do this as of now...
+
+1st way , finds the significant memory that is available or most
+sufficient, not taking account to memory wastage. This comes for
+a high performace, but a cost of low effiency.
+
+__________________
+|   200k        |       ______________
+|_______________|       |            |
+|               |       |   100k     |
+|   300k        |       |____________|
+|_______________|  ______________________________________     
+|   100k        | /|                                    |
+|_______________|/ | Go to the 300k since there you can |
+                   | get a lot of space...              |
+                   |____________________________________|
+                   
+2nd way, called Best Fit finds the least memory suffiecnt partion that is available and puts
+it there! Taking account to memory savings! So this comes for a High Effiecnt
+Memory Managment Account, but a low performance!
+                   
+__________________
+|   200k        |       ______________
+|_______________|       |            |
+|               |       |   100k     |
+|   300k        |       |____________|
+|_______________|  ______________________________________     
+|   100k        | /|                                    |
+|_______________|/ | Go to the 100k since thats the leas|
+                   | place you can fit. Memory First!!!!|
+                   |____________________________________|                   
+                   
+                   
+                   
+So back on track, when a job is finished processing, it then must be Removed!!!! from memory
+also known as deallocation, or it will come in a severe consequence/memory leak!!! Noo nooo!
+With a fixed partion, it is very easy to do... You can just clear it, from the fixed memory
+and all will be fine! But when using a dynmamic solution it gets a little bit more complicated.
+As when you try to erase a memory it tries to join adjacent blocks
+
+
+So looking at these 3 allocation Real Time Memory Schemes we can see there are still major problems.
+
+1)Each one requires the Memory Manager to store the entire process in the main memory, at contigous
+  Locations..
+  
+We need to avoid this... What if we can divide the jobs into seperate chunks of memory! And yes
+we can do this, Virtual Memory is the solution.
+
+
+Virtual Memory
+
+There are 4 evolutions of these 4 Virtual Memory Allocation Schemes!
+
+1) Paged Memory Allocation
+    
+    This Scheme allows us to divide the job into equal size parts!!
+    _____  _____  _____   _____
+    |   |  |   |  |   |   |   |
+    |   |  |   |  |   |   |   |
+    |___|  |___|  |___|   |___|
+                   
+                   
+    The sections of a disk, are known as sectors. They are 
+    like circles(i dont know how to draw a circle on README) 
+    or blocks..
+    
+    And the sections of Main Memory are known as Page Frames:
+           RAM
+    _________________
+    |   PAGE FRAMES |
+    |_______________|
+    |   PAGE FRAMES |
+    |_______________|
+    |   PAGE FRAMES |
+    |_______________|
+    |   PAGE FRAMES |
+    |_______________|
+    |   PAGE FRAMES |
+    |_______________|                  
+                  
+
+Before executing a program, the main memory makes some preparations...
+First it determines, how many pages are in the program(discussed in th
+e beggining of Paged Memory Allocations), And then makes as much page frames
+as how many pages it has and just passes it through them.. They can be stored in
+any pattern what so ever. For next diagram lets say job has 3 pages:
+
+_________________
+|_______1_______|
+|               |
+|               |
+|               |
+|______3________|
+|_______________|
+|               |
+|_______________|
+|______2________|
+
+                 
+Now this is preety effiecent but it does arise some complications.. We need to keep
+track of all the page locations, which increases complexity in application.
+
+
+With the use of three tables stored in main memory we can keep track of locations
+of varius jobs.
+
+
+The Job Table:
+
+|Job Size  PMT Location
+|500           3092  
+|300           4884
+|10            9999
+|________
+                
+The Job Table, includes two important Attributes. The Job Size, and
+the Paged Map Location of that job.
+
+Page Map Table:
+
+|Page Number  Page Frame Number
+|1                  1  
+|2                  6
+|3                  4
+|________
+           
+The Page Map Table includes important info, for each pages.
+The Page Number, and its corresponding Page Frame Memory Adress..
+
+Memory Map Table:
+
+
+|Page Frame       State
+|1                 FREE  
+|2                 BUSY
+|3                 BUSY
+|________
+
+And finally, the Memory Map Table has two attribs. List
+its page location frame, and its status informing if it
+is a Busy or Free state...
+
+
+2) Demand Paging
+
+Now after all that, Demand Paging, is a scheme that is very simmilar
+of Paged Memory Allocation concept. But the MAIN, And KEY Diffrence
+is that page frames are loaded to the Memory As they are NEEDED!
+
+
+__________________               Page Frame Needed
+|               |                   ____________
+|       3       |                   |         |
+|_______________|                   |    3    |
+|               |                   |_________|
+|               |                   |_________| Page Frame Not Needed
+|               |                               _________________
+|               |   ___________________         |       2       |
+|               |  /|                |          |_______________|
+|               | / |I only want Page|          |               |
+|               |/  |Frame #3        |          |       1       |
+|_______________|   |________________|          |               |
+                                                |_______________|
+
+
+
+And also, The Page Map Table we looked at before increases with 3 columns..
+
+|Page Number  Page Frame Number     Status      Modified        Refrenced
+|1                  1                 Y           0                 1
+|2                  6                 N           0                 0
+|3                  4                 N           1                 1
+|________
+
+1) To determine if page is already a memory, known as the Status
+2) To check if the page has been modified
+3) To check if the page has been refrenced recently
+
+How Do we control replacment of Pages?
+
+By Using the Page Replacment Policies...
+
+1) First in First Out(Known as FIFO)
+2) Least Frequently Used
+3) Least Recently Used
+4) Most Recently Used
+
+Are replacement policies used, to change policies based
+on specific alogrithms. Very Cruical to Effiency of System.
+
+
+
+
+Segemented Memory Allocation
+
+What if we could even break out the Jobs even More! We Can with Segmented
+Memory Allocation!
+
+    _____  _____  _____   _____
+    |   |  |   |  |   |   |   |
+    |___|  |___|  |___|   |___|
+    _____  _____  _____   _____
+    |   |  |   |  |   |   |   |
+    |___|  |___|  |___|   |___|
+    
+
+In Segmented Memory Allocation, they break it down even more, and each portion
+represents the nature and structore of the code! Lets take a look
+at these Scripts.. (Javascript)
+
+
+    function divide(int m1, int m2)
+    {
+        return(m1/m2);
+    }
+    
+    function add(int m1, int m2)
+    {
+       return(m1+m2); 
+    }
+    
+    function subtract(int m1, int m2)
+    {
+        return(m1-m2);
+    }
+    
+You may have a function called add that makes calculation of two numbers...
+And/or a function called divide! We can call these one after the other and
+they will run in the chosen order. Now take all those functions and label them
+as segments:
+
+    function divide(int m1, int m2)
+    {
+        return(m1/m2);              <-- SEGMENT
+    }
+    
+    function add(int m1, int m2)
+    {
+       return(m1+m2);                SEGMENT
+    }
+    
+    function subtract(int m1, int m2)
+    {
+        return(m1-m2);              SEGMENT
+    }
+
+
+Instead of using a Page Map Table, we use a Segment Map Table
+
+
+Segment Map Table:
+
+|Segment Number  Page Pointer
+|1                  1  
+|2                  1
+|3                  1
+|4                  1
+|5                  1
+|6                  1
+|________
+
+
+It makes a list of all the vary size segments, that need to be put
+in the main memory to process..
+
+Final Scheme
+
+Now move on to the Final Scheme...
+
+This Final Scheme is a Mixture of both 
+
+Segmented Memory Allocation
+
+            AND
+            
+DEMAND PAGED MEMORY ALLOCATION
+
+It offers the positive beniefts of the Segmentation idea as well as
+the physical benifits of paging! No new logic involved, but minor modifications.
+It makes use of both Segment Map Table, and Paged Map Table. Plus additonal
+authority to Read, Write, and Execute Files.. The Downside of this scheme though
+is the overhead and complexity to handle the load, with all the tables.
+
+
+
+
+CONCEPT: Why is Virtual Memory a Good THing?
+
+Well lets say there is a Ram And No Job can go into it..
+
+
+_______RAM_______
+|     JOB 1     |
+|_______________|                        __________
+|               |                        |        |
+|     JOB 2     |   ____________         |        |
+|_______________| /|            |        |  JOB 5 | 
+|     JOB 3     |/ |No More Jobs|        |        |
+|_______________|  |Available.. |        |________|
+                   |____________|
+
+
+We can Exceed Memory, by going back, to the Hard Drive! Although
+it is a slower alternative it can act as an extension to RAM!
+
+  
+_HARD DRIVE       _______RAM_______
+ |        |       |     JOB 1     |
+ |        |       |_______________|                        __________
+ |        |       |               |                        |        |
+ |        |       |     JOB 2     |   ____________         |        |
+ |        |       |_______________| /|            |        |  JOB 5 | 
+ |        |       |     JOB 3     |/ |No More Jobs|        |        |
+ |___|____|       |_______________|  |Available.. |        |____|___|
+     |                               |____________|             |
+     |__________________________________________________________|
+     
+     
+Conclusion:
+
+We have came a long way to memory. But as an increased Proccesing Cost, The Operating
+System can provide a more efficent service to allow the CPU to handle jobs with 
+better time frame and effectivness..
+
+
+
+
