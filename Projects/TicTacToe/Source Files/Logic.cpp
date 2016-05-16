@@ -47,7 +47,7 @@ void Logic::returnPos(short int &posAI, std::vector<int> &avaiable, std::vector<
         
       int num = (rand() % 8) + 0;    
       posAI = avaiable.at(num);
-      std::cout << num << endl;
+      std::cout << "AI NUM " << num << endl;
 }
 
 void Logic::deleteVec(std::vector<int> &avaiable, std::vector<int> &taken, short int posPlayer, short int posAI)
