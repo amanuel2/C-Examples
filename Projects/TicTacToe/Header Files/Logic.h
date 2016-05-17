@@ -23,4 +23,5 @@ private:
     void drawSt();
     void returnPos(short int &posAI, std::vector<int> &avaiable, std::vector<int> &taken);
     void deleteVec(std::vector<int> &avaiable, std::vector<int> &taken, short int posPlayer, short int posAI);
+    void deleteVecPlayerOnly(std::vector<int> &avaiable, std::vector<int> &taken,short int posPlayer);
 };

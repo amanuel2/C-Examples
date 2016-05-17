@@ -14,13 +14,13 @@ void Logic::run(std::vector<int> &avaiable, std::vector<int> &taken)
     
     while(std::cin >> posPlayer)
     {
+        deleteVecPlayerOnly(avaiable,taken,posPlayer);
         returnPos(posAI,avaiable,taken);
         deleteVec(avaiable,taken,posPlayer,posAI);
         if(posPlayer <= 9 && posPlayer >= 0){
             mgraph.draw();
             mgraph.drawX(posPlayer,"X");
             mgraph.drawX(posAI,"O");
-        	
         }else{
             try{
                 if(true)
@@ -56,6 +56,12 @@ void Logic::deleteVec(std::vector<int> &avaiable, std::vector<int> &taken, short
     taken.push_back(posAI);
     
     avaiable.erase(avaiable.begin() + posAI);
+    avaiable.erase(avaiable.begin() + posPlayer);
+}
+
+void Logic::deleteVecPlayerOnly(std::vector<int> &avaiable, std::vector<int> &taken,short int posPlayer)
+{
+    taken.push_back(posPlayer);
     avaiable.erase(avaiable.begin() + posPlayer);
 }
 
