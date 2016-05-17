@@ -25,8 +25,9 @@ private:
     void mainGame();
     void drawHangMan(int attempts, int mode);
     void checkIfItEquals(string guessLet);
-    void stringToVec();
     void deleteSimilarLet(string str);
+    void stringToVec();
+    void checkFail();
     void mainGameLoop();
     int attemptsMadeBad = 0;
     int attemptsMadeGood = 0;
