@@ -77,7 +77,12 @@ void Hangman::checkIfItEquals(string guessLet)
             }
         }
         
-    if(correctGs == false)
+    this -> checkFail();
+}
+
+void Hangman::checkFail()
+{
+        if(correctGs == false)
     {
         if(MODE == 0)
         {
