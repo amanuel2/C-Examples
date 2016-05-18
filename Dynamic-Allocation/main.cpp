@@ -7,8 +7,11 @@
   */
 /*
   Dynamic Memory Allocation.
-  Faster way of allocating memory.
-  Gets size on the fly, rather than before
+  Not a Faster way of allocating memory.
+  Gets size on the fly, rather than before.
+  But Stack Allocation<Your Normal Allocation..>
+  Is Much Faster than Dynamic allocation or allocating
+  in your HEAP.
 
   How to dynamically allocate? You use the
   new keyword. When you dynamically allocate
