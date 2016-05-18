@@ -3,11 +3,11 @@
 
 Dictonary::Dictonary()
 {
+       srand(time(NULL));
 }
 
 int myRand(int low, int high) 
 {
-   srand(time(NULL));
    return rand() % (high - low + 1) + low;
 }
 
