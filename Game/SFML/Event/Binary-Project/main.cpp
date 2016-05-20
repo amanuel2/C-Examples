@@ -8,13 +8,11 @@
 using std::cout;
 using std::endl;
 
-class BinaryGame
+struct BinaryGame
 {
 public:
-    BinaryGame()
-    {
+    BinaryGame(){};
 
-    };
     void pushToBin(const std::string &binNum)
     {
             binaryTyped.push_back(binNum);
