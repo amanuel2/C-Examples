@@ -7,5 +7,5 @@ import (
 
 func main()
 {
-  fmt.Println("Welcome To SFML(Simple and Fast Multimedia Library)")
+  fmt.Println("Welcome To SFML(Simple and Fast Multimedia Library)");
 }
