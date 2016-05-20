@@ -6,6 +6,7 @@
 echo "_________________________"
 echo "|                       |"
 echo "|Author : Amanuel Bogale|"
+echo "|                       |"
 echo "-------------------------"
 echo "Building C++ File."
 
