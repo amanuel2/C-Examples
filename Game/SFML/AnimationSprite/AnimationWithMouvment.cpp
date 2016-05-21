@@ -30,9 +30,17 @@ public:
 		}
 	}
 };
+
+enum Direction 
+{ 
+	Down,
+	Left, 
+	Right, 
+	Up 
+};
+	
 int main()
 {
-	enum Direction { Down, Left, Right, Up };
 	sf::Vector2i source(32, Down);
 	Mouvment mouvment;
 
