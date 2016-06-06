@@ -1058,12 +1058,12 @@ var PACMAN = (function () {
         var extension = 'mp3';
 
         var audio_files = [
-            ["start", root + "audio/opening_song." + extension],
-            ["die", root + "audio/die." + extension],
-            ["eatghost", root + "audio/eatghost." + extension],
-            ["eatpill", root + "audio/eatpill." + extension],
-            ["eating", root + "audio/eating.short." + extension],
-            ["eating2", root + "audio/eating.short." + extension]
+            ["start", root + "views/assets/audio/pacman/opening_song." + extension],
+            ["die", root + "views/assets/audio/pacman/die." + extension],
+            ["eatghost", root + "views/assets/audio/pacman/eatghost." + extension],
+            ["eatpill", root + "views/assets/audio/pacman/eatpill." + extension],
+            ["eating", root + "views/assets/audio/pacman/eating.short." + extension],
+            ["eating2", root + "views/assets/audio/pacman/eating.short." + extension]
         ];
 
         load(audio_files, function() { loaded(); });
